@@ -4,10 +4,8 @@ var fs = require('fs');
 
 app.get('/', function(request, response) {
 
-    fs.readFileSync('index.html', {'encoding':'utf8'}, function (err, data) {
-      if (err) throw err;
-      response.send(data);
-  });
+  var buf = new Buffer(fs.readFileSync('file.html'), 'utf-8'); 
+  response.send(buf.toString());
 
 });
 
